@@ -8,29 +8,6 @@ This repository contains a decoupled, cross-platform software framework for a 4-
 
 ---
 
-## 🏗️ System Architecture & Data Flow
-
-+-----------------------------------+
-
-+-----------------------------------+
-|
-v (OpenCV / IPPE PnP)
-+-----------------------------------+
-
-| Overhead Video Stream | +-----------------------------------+
-|
-v (Telemetry over UDP)
-+-----------------------------------+
-
-| Python State Estimation | +-----------------------------------+
-|
-v (Serial/COM)
-+-----------------------------------+
-
-| MATLAB Control Loop Engine | +-----------------------------------+
-| Arduino Microcontroller Node |
----
-
 ## 📂 Codebase Directory Breakdown
 
 ### 🎯 1. Calibration & Setup Utilities (`/vision/calibration`)
@@ -42,7 +19,7 @@ v (Serial/COM)
 ### 🎥 2. Real-Time Tracking Engines (`/vision/tracking`)
 
 - `CV_2.py`: The production tracking node for a static-anchor system. It performs sub-pixel marker localization, disambiguates pose inversion via reprojection error screening, applies Exponential Moving Average (EMA) and Kalman filtering, and streams spatial telemetry via UDP.
-- `reconf.py`: An extended variant engineered for **reconfigurable anchor setups**. It calculates the operational tension-positive workspace polygon in real-time, detecting if dynamically adjusted anchors put target points out of bounds.
+- `workspace_detetction.py`: An extended variant engineered for **reconfigurable anchor setups**. It calculates the operational tension-positive workspace polygon in real-time, detecting if dynamically adjusted anchors put target points out of bounds.
 
 ### 💻 3. Computation & Trajectory Generation (`/control`)
 
@@ -50,7 +27,7 @@ v (Serial/COM)
 
 ### 🔌 4. Low-Level Actuation (`/firmware`)
 
-- `stepper_control.ino` (Arduino Code): Listens to the Serial port using a custom, non-blocking character parsing buffer. Receives differential step adjustments `(s1,s2,s3,s4)` and uses the `AccelStepper` library to run four motors simultaneously without stalling execution loops.
+- `Arduino.ino` (Arduino Code): Listens to the Serial port using a custom, non-blocking character parsing buffer. Receives differential step adjustments `(s1,s2,s3,s4)` and uses the `AccelStepper` library to run four motors simultaneously without stalling execution loops.
 
 ---
 

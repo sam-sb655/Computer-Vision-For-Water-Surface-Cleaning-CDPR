@@ -18,7 +18,7 @@ This repository contains a decoupled, cross-platform software framework for a 4-
 
 ### 🎥 2. Real-Time Tracking Engines (`/vision/tracking`)
 
-- `CV_2.py`: The production tracking node for a static-anchor system. It performs sub-pixel marker localization, disambiguates pose inversion via reprojection error screening, applies Exponential Moving Average (EMA) and Kalman filtering, and streams spatial telemetry via UDP.
+- `Computer_Vision_Tracker.py`: The production tracking node for a static-anchor system. It performs sub-pixel marker localization, disambiguates pose inversion via reprojection error screening, applies Exponential Moving Average (EMA) and Kalman filtering, and streams spatial telemetry via UDP.
 - `workspace_detetction.py`: An extended variant engineered for **reconfigurable anchor setups**. It calculates the operational tension-positive workspace polygon in real-time, detecting if dynamically adjusted anchors put target points out of bounds.
 
 ### 💻 3. Computation & Trajectory Generation (`/control`)
